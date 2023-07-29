@@ -1,30 +1,32 @@
-#include <iostream>
-#include <cmath>
-
 using namespace std;
 
-double calculo_pi(){
+double calculo_pi(int& i){
 
-	int i, signo, n;
+	int verificador;
 	double pi;
-n=1000000;
-/*cout<<"Escriba el numero de iteraciones a realizar: "; cin>>n;*/
+	const int entero_pi=3141592, entero=1000000;
+	bool iguales=0;
+	
 i=0;
-signo=1;
 pi=0.0;
 
-	for (i; i<=n;i++){
-		pi += pow(-1,i) / (2*i+1);
+	for (i; iguales!=1;i++){
+		pi += pow(-1,i) *4 / (2*i+1);
+		verificador= pi * entero;
+	
+		if (verificador==entero_pi){
+		iguales=1;	}
 	}	
-pi*=4;
 return pi;
 }
 
 
 int main(){
-	double aproximado_pi = calculo_pi();
+	int iteraciones;
+	double aproximado_pi = calculo_pi(iteraciones);
+	
 	cout.precision(7);
-	cout<<"El valor de pi aproximado con 6 decimales es: "<<aproximado_pi<<" Y se realizaron 1000000 de iteraciones.";
-	/*cout<<"El valor de pi aproximado con 6 decimales es: "<<aproximado_pi;*/
+	cout<<"El valor de pi aproximado con 6 decimales es: "<<aproximado_pi<<endl;
+	cout<<"La cantidad de iteraciones realizadas fueron: "<<iteraciones;
 	return 0;
 }
